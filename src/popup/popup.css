@@ -1,0 +1,15 @@
+/* Estilos del popup. Variables y botones en shared/base.css */
+.popup { width: 300px; padding: 16px; }
+.popup h1 { font-size: 16px; margin: 0 0 12px; }
+.field { display: block; margin: 0 0 12px; }
+.field > span { display: block; margin-bottom: 4px; color: var(--muted); }
+fieldset.field { border: 0; padding: 0; }
+fieldset.field legend { color: var(--muted); margin-bottom: 4px; padding: 0; }
+.inline { display: flex; gap: 6px; align-items: center; margin-bottom: 4px; }
+select, input[type=range] { width: 100%; }
+select { font: inherit; padding: 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.popup .primary { width: 100%; padding: 10px; }
+.status { min-height: 1.4em; margin: 10px 0 0; }
+.status[data-state=error] { color: var(--error); }
+.status[data-state=done] { color: var(--ok); }
+.hint { color: var(--muted); font-size: 12px; margin: 8px 0 0; }
