@@ -1,3 +1,5 @@
+import { MSG, STATE } from '../shared/messages.js';
+
 const $ = (id) => document.getElementById(id);
 // v2: la escala por defecto pasó a "nativa" (sin zoom); se ignoran ajustes guardados antes.
 const SETTINGS_KEY = 'snappage-settings-v2';
@@ -38,15 +40,15 @@ syncUi();
 document.querySelectorAll('select, input').forEach((el) => el.addEventListener('input', syncUi));
 
 chrome.runtime.onMessage.addListener((msg) => {
-  if (msg?.type !== 'progress') return;
+  if (msg?.type !== MSG.PROGRESS) return;
   setStatus(msg.text, msg.state);
-  if (msg.state !== 'working') $('capture').disabled = false;
+  if (msg.state !== STATE.WORKING) $('capture').disabled = false;
 });
 
 $('capture').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab?.id) return setStatus('No se encontró la pestaña activa.', 'error');
+  if (!tab?.id) return setStatus('No se encontró la pestaña activa.', STATE.ERROR);
   $('capture').disabled = true;
-  setStatus('Iniciando…', 'working');
-  chrome.runtime.sendMessage({ type: 'capture', tabId: tab.id, options: readSettings() });
+  setStatus('Iniciando…', STATE.WORKING);
+  chrome.runtime.sendMessage({ type: MSG.CAPTURE, tabId: tab.id, options: readSettings() });
 });

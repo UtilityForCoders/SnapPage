@@ -3,15 +3,16 @@
 import { saveCapture, pruneOld } from '../shared/db.js';
 import { captureFullPage } from './capture.js';
 import { friendlyError } from './errors.js';
+import { MSG, STATE } from '../shared/messages.js';
 
 const KEEP_CAPTURES = 5;
 
 let busy = false;
 
 chrome.runtime.onMessage.addListener((msg) => {
-  if (msg?.type !== 'capture') return;
+  if (msg?.type !== MSG.CAPTURE) return;
   if (busy) {
-    progress('Ya hay una captura en curso.', 'error');
+    progress('Ya hay una captura en curso.', STATE.ERROR);
     return;
   }
   run(msg.tabId, msg.options || {});
@@ -29,11 +30,11 @@ async function run(tabId, options) {
     await pruneOld(KEEP_CAPTURES);
 
     await openPreview(tabId, id);
-    progress('¡Listo!', 'done');
+    progress('¡Listo!', STATE.DONE);
     setBadge('');
   } catch (err) {
     console.error(err);
-    progress(friendlyError(err), 'error');
+    progress(friendlyError(err), STATE.ERROR);
     setBadge('ERR', '#d93025');
   } finally {
     busy = false;
@@ -48,8 +49,8 @@ async function openPreview(tabId, id) {
   });
 }
 
-function progress(text, state = 'working') {
-  chrome.runtime.sendMessage({ type: 'progress', text, state }).catch(() => {});
+function progress(text, state = STATE.WORKING) {
+  chrome.runtime.sendMessage({ type: MSG.PROGRESS, text, state }).catch(() => {});
 }
 
 function setBadge(text, color) {
