@@ -1,4 +1,4 @@
-import { getCapture, deleteCapture } from './db.js';
+import { getCapture, deleteCapture } from '../shared/db.js';
 
 // Límites de canvas de Chrome: ningún lado mayor a 32767 px y área máxima ~268 Mpx.
 const MAX_SIDE = 32767;

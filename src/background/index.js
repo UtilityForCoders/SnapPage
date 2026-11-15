@@ -1,4 +1,4 @@
-import { saveCapture, pruneOld } from './db.js';
+import { saveCapture, pruneOld } from '../shared/db.js';
 
 // Alto máximo de cada tramo en píxeles reales. Chrome falla o devuelve imágenes
 // corruptas con capturas mucho más altas, así que las páginas largas se dividen.
@@ -167,7 +167,7 @@ async function capture(tabId, { scale = 2, format = 'png', quality = 92, preScro
 
     const tab = await chrome.tabs.get(tabId).catch(() => null);
     await chrome.tabs.create({
-      url: chrome.runtime.getURL(`preview.html?id=${id}`),
+      url: chrome.runtime.getURL(`src/preview/preview.html?id=${id}`),
       ...(tab ? { index: tab.index + 1, windowId: tab.windowId } : {}),
     });
     progress('¡Listo!', 'done');
