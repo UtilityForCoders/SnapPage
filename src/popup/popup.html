@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Snappage</title>
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="popup">
+  <h1>Snappage</h1>
+
+  <label class="field">
+    <span>Calidad (escala)</span>
+    <select id="scale">
+      <option value="1" selected>Nativa · sin zoom (recomendada)</option>
+      <option value="2">2x · alta (la página hace zoom al capturar)</option>
+      <option value="3">3x · muy alta (la página hace zoom al capturar)</option>
+    </select>
+  </label>
+
+  <fieldset class="field">
+    <legend>Formato</legend>
+    <label class="inline"><input type="radio" name="format" value="png" checked> PNG (sin pérdida)</label>
+    <label class="inline"><input type="radio" name="format" value="jpeg"> JPG (más liviano)</label>
+  </fieldset>
+
+  <label class="field" id="qualityField" hidden>
+    <span>Calidad JPG: <output id="qualityOut">92</output></span>
+    <input type="range" id="quality" min="50" max="100" value="92">
+  </label>
+
+  <label class="inline field">
+    <input type="checkbox" id="preScroll" checked>
+    Cargar imágenes diferidas (sin mover la página)
+  </label>
+
+  <button id="capture" class="primary">Capturar página completa</button>
+  <p id="status" class="status" role="status"></p>
+  <p class="hint">Chrome mostrará un aviso de “depuración” mientras captura. Es normal.</p>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* Estilos de la vista previa. Variables y botones en shared/base.css */
+.toolbar {
+  position: sticky; top: 0; z-index: 1;
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+  padding: 12px 16px; background: var(--bg); border-bottom: 1px solid var(--border);
+}
+.meta { display: flex; flex-direction: column; min-width: 0; }
+.meta strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+.meta span { color: var(--muted); font-size: 13px; }
+.actions { display: flex; gap: 8px; }
+.notice { margin: 12px 16px 0; padding: 10px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
+.stage { padding: 16px; background: var(--surface); min-height: calc(100vh - 66px); cursor: zoom-out; overflow-x: auto; }
+.stage img { display: block; margin: 0 auto 8px; box-shadow: 0 1px 6px rgb(0 0 0 / 0.2); }
+.stage.fit { cursor: zoom-in; }
+.stage.fit img { max-width: 100%; height: auto; }

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snappage · Vista previa</title>
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body class="preview">
+  <header class="toolbar">
+    <div class="meta">
+      <strong id="title">Cargando…</strong>
+      <span id="details"></span>
+    </div>
+    <div class="actions">
+      <button id="copy" hidden>Copiar</button>
+      <button id="delete">Eliminar</button>
+      <button id="download" class="primary" disabled>Descargar</button>
+    </div>
+  </header>
+  <p id="notice" class="notice" hidden></p>
+  <main id="stage" class="stage fit" title="Clic para alternar entre ajustar y tamaño real"></main>
+  <script src="preview.js" type="module"></script>
+</body>
+</html>

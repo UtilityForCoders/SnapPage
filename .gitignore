@@ -1,0 +1,18 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Paquetes generados para publicar
+*.zip
+*.crx
+*.pem
+dist/
+
+# Dependencias (si se añaden herramientas en el futuro)
+node_modules/

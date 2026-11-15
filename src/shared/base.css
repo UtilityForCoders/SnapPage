@@ -1,0 +1,44 @@
+/* Variables de color (con modo oscuro), tipografía y botones compartidos. */
+:root {
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #1f2328;
+  --muted: #5f6368;
+  --border: #d0d7de;
+  --accent: #1a73e8;
+  --accent-text: #ffffff;
+  --error: #d93025;
+  --ok: #188038;
+  color-scheme: light dark;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1f1f;
+    --surface: #2b2b2b;
+    --text: #e8eaed;
+    --muted: #9aa0a6;
+    --border: #3c4043;
+    --accent: #8ab4f8;
+    --accent-text: #202124;
+    --error: #f28b82;
+    --ok: #81c995;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover:not(:disabled) { filter: brightness(0.96); }
+button:disabled { opacity: 0.6; cursor: default; }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: transparent; font-weight: 600; }
